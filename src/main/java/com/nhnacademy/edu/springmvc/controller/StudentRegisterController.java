@@ -30,7 +30,7 @@ public class StudentRegisterController {
 
     @GetMapping
     public String studentRegisterForm() {
-        return "studentRegister";
+        return "thymeleaf/studentRegister";
     }
 
     @PostMapping
@@ -42,7 +42,7 @@ public class StudentRegisterController {
         Student registerStudent = studentRepository.register(student.getName(), student.getEmail(), student.getScore(), student.getComment());
 
         mv.addObject("student", registerStudent);
-        mv.setViewName("studentView");
+        mv.setViewName("thymeleaf/studentView");
 
         return mv;
     }
@@ -51,6 +51,6 @@ public class StudentRegisterController {
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public String notFound(StudentNotFoundException ex, Model model) {
         model.addAttribute("exception", ex);
-        return "error";
+        return "thymeleaf/error";
     }
 }

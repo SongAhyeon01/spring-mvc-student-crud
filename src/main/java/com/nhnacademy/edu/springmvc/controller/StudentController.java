@@ -30,7 +30,7 @@ public class StudentController {
     public String viewStudent(@PathVariable("studentId") long studentId, Model model) {
         Student student = studentRepository.getStudent(studentId);
         model.addAttribute("student", student);
-        return "studentView";
+        return "thymeleaf/studentView";
     }
 
     @GetMapping(value = "/{studentId}", params = "hideScore=yes")
@@ -40,7 +40,7 @@ public class StudentController {
 
         mv.addObject("student", student);
         mv.addObject("hideScore", hideScore);
-        mv.setViewName("studentView");
+        mv.setViewName("thymeleaf/studentView");
 
         return mv;
     }
@@ -52,7 +52,7 @@ public class StudentController {
         }
         Student student = studentRepository.getStudent(studentId);
         modelMap.addAttribute("student", student);
-        return "studentModify";
+        return "thymeleaf/studentModify";
     }
 
     @PostMapping("/{studentId}/modify")
@@ -72,7 +72,7 @@ public class StudentController {
 
             studentRepository.modify(student);
             mv.addObject("student", student);
-            mv.setViewName("studentView");
+            mv.setViewName("thymeleaf/studentView");
 
             return mv;
         } catch (StudentNotFoundException e) {
@@ -84,7 +84,7 @@ public class StudentController {
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public String notFound(StudentNotFoundException ex, Model model) {
         model.addAttribute("exception", ex);
-        return "error";
+        return "thymeleaf/error";
     }
 
 }

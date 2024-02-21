@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>학생 정보 조회</title>
+</head>
+<body>
+    <h1>학생 조회 결과</h1>
+    이름 : <span th:text="${student.name}"></span><br>
+    이메일 : <span th:text="${student.email}"></span><br>
+    <span th:if="${hideScore == null}">
+        성적 : <span th:text="${student.score}"></span><br>
+        평가 : <span th:text="${student.comment}"></span><br>
+    </span>
+    <br>
+    <a th:href="@{/student/{id}/modify(id=${student.id})}">정보 수정</a>
+</body>
+</html>

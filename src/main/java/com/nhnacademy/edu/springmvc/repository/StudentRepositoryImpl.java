@@ -41,7 +41,10 @@ public class StudentRepositoryImpl implements StudentRepository {
     @Override
     public Student getStudent(long id) {
         log.debug("getting student : {}", id);
-        return exists(id) ? studentMap.get(id) : null;
+        if (!exists(id)) {
+            throw new StudentNotFoundException();
+        }
+        return studentMap.get(id);
     }
 
     @Override

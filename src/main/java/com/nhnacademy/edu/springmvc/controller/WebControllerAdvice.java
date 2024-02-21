@@ -15,6 +15,6 @@ public class WebControllerAdvice {
         log.error("exception from web controller advice");
 
         model.addAttribute("exception", ex);
-        return "error";
+        return "thymeleaf/error";
     }
 }
